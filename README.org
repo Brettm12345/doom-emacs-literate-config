@@ -4,8 +4,8 @@ My [[github:hlissner/doom-emacs][doom-emacs]] literate config
 
 * Install
 #+BEGIN_SRC sh :tangle no
-git clone git://github.com/hlissner/doom-emacs ~/.emacs.d
-git clone -b develop git://github.com/Brettm12345/doom-emacs-private.git ~/.config/doom
+git clone -b develop git://github.com/hlissner/doom-emacs ~/.emacs.d
+git clone git://github.com/Brettm12345/doom-emacs-literate-config.git ~/.config/doom
 cd ~/.emacs.d
 make
 #+END_SRC
