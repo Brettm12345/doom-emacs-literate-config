@@ -236,7 +236,7 @@ Set default indentation for css to 2 spaces
 Set default location for ~magit-list-repositories~ 
 #+BEGIN_SRC emacs-lisp
 (after! magit 
-  (setq magit-repository-directories '(("~/src" . 2))))
+  (setq magit-repository-directories '(("~/src" . 3) ("~/.emacs.d") ("~/.config/doom"))))
 #+END_SRC
 Be sure to automatically sign commits
 #+BEGIN_SRC emacs-lisp
