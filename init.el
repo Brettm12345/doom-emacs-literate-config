@@ -77,10 +77,11 @@
        rust
        sh
        web
-       
+
        :app
        (email +gmail)
 
        :config
-       (default +bindings +snippets +evil-commands))
+       (default +bindings +evil-commands)
+       literate)
 

@@ -1,0 +1,264 @@
+#+TITLE: My emacs doom configuration
+#+AUTHOR: Brett Mandler <brettmandler@gmail.com>
+#+PROPERTY: header-args :tangle yes
+
+* Configuration
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+
+** Personal Information
+Full name and email address
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Brett Mandler"
+      user-mail-address "brettmandler@gmail.com")
+#+END_SRC
+** General settings
+*** General
+Resize the frame pixelwise. Making emacs compatible with tiling window managers
+#+BEGIN_SRC emacs-lisp
+(setq frame-resize-pixelwise t)
+#+END_SRC
+*** Interface
+Highlight trailing whitespace
+#+BEGIN_SRC emacs-lisp
+(setq show-trailing-whitespace t)
+#+END_SRC
+Make comments italic
+#+BEGIN_SRC emacs-lisp
+(make-face-italic font-lock-comment-face)
+#+END_SRC
+** Keybinds
+*** Global keybinds
+Use ~-~ to jump up to the previous directory like with [[github:tpope/vim-vinegar][vim-vinegar]]
+#+BEGIN_SRC emacs-lisp
+(map! :m  "-"  #'dired-jump)
+#+END_SRC
+Use ~] SPC~ and ~[ SPC~ to insert newlines above/below like with [[github:tpope/vim-unimpaired][vim-unimpaired]]
+#+BEGIN_SRC emacs-lisp
+(map! :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
+      :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
+#+END_SRC
+*** Leader keybinds
+#+BEGIN_SRC emacs-lisp
+(map!
+ (:leader
+   (:prefix "TAB"
+     :desc "Rename workspace" :n "r"   #'+workspace/rename)
+   (:prefix "f"
+     :desc "Find file in dotfiles" :n "t" #'+brett/find-in-dotfiles
+     :desc "Browse dotfiles"       :n "T" #'+brett/browse-dotfiles)
+   (:prefix "n"
+     :desc "Browse mode notes"     :n  "m" #'+brett/find-notes-for-major-mode
+     :desc "Browse project notes"  :n  "p" #'+brett/find-notes-for-project)))
+#+END_SRC
+** Doom modules
+*** [[doom-modules:app/email/][app/email]]
+**** Install
+My configuration requires:
++ ~[[github:djnym/isync][isync]]~ (for syncing emails)
++ ~[[github:djcb/mu][mu]]~ (for indexing emails)
++ ~[[github:gopasspw/gopass][gopass]]~ (for storing passwords/authentication)
+**** Configuration
+***** Isync
+****** [[file:~/.config/mbsync/config][Mbsync config]]
+Configure mbsync to fetch emails /see also:/ https://wiki.archlinux.org/index.php/isync
+#+BEGIN_SRC conf :tangle no
+IMAPAccount gmail
+Host imap.gmail.com
+User brettmandler@gmail.com
+PassCmd "gopass websites/google.com/brettmandler | head -n 1"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/var/mail/
+Inbox ~/var/mail/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Create Both
+SyncState *
+#+END_SRC
+****** Emacs setup
+Configure emacs to use mbsync as the ~mu4e-get-mail-command~
+#+BEGIN_SRC emacs-lisp
+(after! mu4e
+  (setq mu4e-get-mail-command "mbsync -c '~/.config/mbsync/config' -a"))
+#+END_SRC
+***** Mu4e
+****** Directories
+Setup the deafault /maildirs/
+#+BEGIN_SRC emacs-lisp
+(setq mu4e-maildir        (expand-file-name "~/var/mail")
+      mu4e-attachment-dir (expand-file-name "attachments" mu4e-maildir))
+#+END_SRC
+****** Bookmarks
+Set bookmarks for easily finding messages
+#+BEGIN_SRC emacs-lisp
+(after! mu4e
+  (setq mu4e-bookmarks
+        `(("\\\\Inbox" "Inbox" ?i)
+          ("\\\\Draft" "Drafts" ?d)
+          ("flag:unread AND \\\\Inbox" "Unread messages" ?u)
+          ("flag:flagged" "Starred messages" ?s)
+          ("date:today..now" "Today's messages" ?t)
+          ("date:7d..now" "Last 7 days" ?w)
+          ("mime:image/*" "Messages with images" ?p))))
+
+#+END_SRC
+****** Gmail setup
+Configure smtp and folders to work well with gmail
+#+BEGIN_SRC emacs-lisp
+(setq smtpmail-stream-type 'starttls
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587)
+
+(set-email-account! "gmail.com"
+                    '((mu4e-sent-folder       . "/gmail.com/Sent Mail")
+                      (mu4e-drafts-folder     . "/gmail.com/Drafts")
+                      (mu4e-trash-folder      . "/gmail.com/Trash")
+                      (mu4e-refile-folder     . "/gmail.com/All Mail")
+                      (smtpmail-smtp-user     . "brettmandler")
+                      (user-mail-address      . "brettmandler@gmail.com")))
+#+END_SRC
+*** [[doom-modules:emacs/eshell/][emacs/eshell]]
+Set aliases for emacs shell
+#+BEGIN_SRC emacs-lisp
+(after! eshell
+  (set-eshell-alias!
+   "f"   "find-file $1"
+   "l"   "ls -lh"
+   "d"   "dired $1"
+   "gl"  "(call-interactively 'magit-log-current)"
+   "gs"  "magit-status"
+   "gc"  "magit-commit"
+   "rg"  "rg --color=always $*"))
+#+END_SRC
+*** [[doom-modules:emacs/term/][emacs/term]]
+Use fish as my default shell
+#+BEGIN_SRC emacs-lisp
+(after! multi-term
+  (setq multi-term-program "/usr/bin/fish"))
+#+END_SRC
+*** [[doom-modules:feature/evil/][feature/evil]]
+**** [[github:edkolev/evil-lion][evil-lion]]
+Evil lion is a package for aligning text using the keybinds ~gl~ to align left
+and ~gL~ to align right
+#+BEGIN_SRC emacs-lisp
+(def-package! evil-lion
+  :commands (evil-lion-left evil-lion-right)
+  :when (featurep! :feature evil)
+  :config
+  (map! :nv "gl" #'evil-lion-left
+        :nv "gL" #'evil-lion-right))
+#+END_SRC
+**** [[github:emacsmirror/evil-replace-with-register][evil-replace-with-register]]
+Evil replace with register is a package which allows a user to replace a text
+object with the content of the register I have it bound to ~go~
+#+BEGIN_SRC emacs-lisp
+(def-package! evil-replace-with-register
+  :commands (evil-replace-with-register)
+  :when (featurep! :feature evil)
+  :config
+  (map! :nv "go" #'evil-replace-with-register))
+#+END_SRC
+*** [[doom-modules:lang/javascript/][lang/javascript]]
+Set default indentation offset to 2 spaces
+#+BEGIN_SRC emacs-lisp
+(after! js2-mode (setq js2-basic-offset 2))
+#+END_SRC
+Enable bounce indentation
+#+BEGIN_SRC emacs-lisp
+(after! js2-mode (setq js2-bounce-indent-p t))
+#+END_SRC
+*** [[doom-modules:lang/org/][lang/org]]
+Set default directories for org files
+#+BEGIN_SRC emacs-lisp
+(after! org-mode
+  (setq +org-directory (expand-file-name "~/usr/org")
+        org-agenda-files (list org-directory)))
+#+END_SRC
+Change the character that displays on collapsed headings
+#+BEGIN_SRC emacs-lisp
+(setq org-ellipsis " ▼ ")
+#+END_SRC
+Change the default bullet character
+#+BEGIN_SRC emacs-lisp
+(after! org-bullets
+  (setq org-bullets-bullet-list '("#")))
+#+END_SRC
+*** [[doom-modules:lang/sh/][lang/sh]]
+**** [[github:gnouc/flycheck-checkbashisms][flycheck-checkbashisms]]
+Flycheck checker for checking files begining with =#!/bin/sh= which also contain
+code exclusive to bash *requires:* ~checkbashisms~
+#+BEGIN_SRC emacs-lisp
+(def-package! flycheck-checkbashisms
+  :when (and (featurep! :feature syntax-checker)(featurep! :lang sh))
+  :after sh-mode
+  :hook (flycheck-mode . flycheck-checkbashisms-setup))
+#+END_SRC
+*** [[doom-modules:lang/web/][lang/web]]
+Set default indentation for css to 2 spaces
+#+BEGIN_SRC emacs-lisp
+(after! css-mode
+  (setq css-indent-offset 2))
+#+END_SRC
+*** [[doom-modules:tools/magit/][tools/magit]]
+Set default location for ~magit-list-repositories~ 
+#+BEGIN_SRC emacs-lisp
+(after! magit 
+  (setq magit-repository-directories '(("~/src" . 2))))
+#+END_SRC
+Be sure to automatically sign commits
+#+BEGIN_SRC emacs-lisp
+(after! magit
+  (setq magit-commit-arguments '("--gpg-sign=72B1D27CB7D82F0F")
+        magit-rebase-arguments '("--autostash" "--gpg-sign=72B1D27CB7D82F0F")
+        magit-pull-arguments   '("--rebase" "--autostash" "--gpg-sign=72B1D27CB7D82F0F"))
+  (magit-define-popup-option 'magit-rebase-popup
+    ?S "Sign using gpg" "--gpg-sign=" #'magit-read-gpg-secret-key))
+#+END_SRC
+Enable magithub
+#+BEGIN_SRC emacs-lisp
+(setq +magit-hub-features t)
+#+END_SRC
+Set the prefered git url method
+#+BEGIN_SRC emacs-lisp
+(after! magithub (setq magithub-preferred-remote-method 'git_url))
+#+END_SRC
+Set the default directory to clone new repos
+#+BEGIN_SRC emacs-lisp
+(after! magithub (setq magithub-clone-default-directory "~/src/github.com"))
+#+END_SRC
+*** [[doom-modules:ui/doom/][ui/doom]]
+Doom user interface settings
+**** Fonts
+I like to use [[github:be5invis/Iosevka][Iosevka]] as my programming font
+***** Default font 
+~doom-font~ is the default font for emacs to use
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "Iosevka Term Medium" :size 22))
+#+END_SRC
+***** Variable pitch
+~doom-variable-pitch-font~ is a proportonal font used for reading emails, doc etc.
+#+BEGIN_SRC emacs-lisp
+(setq doom-variable-pitch-font (font-spec :family "Iosevka Term Medium" :size 22))
+#+END_SRC
+***** Big font
+~doom-big-font~ is the default font to use for ~doom-big-font-mode~
+#+BEGIN_SRC emacs-lisp
+(setq doom-big-font (font-spec :family "Iosevka Term Medium" :size 24))
+#+END_SRC
+**** Line Numbers
+Use vim-esque relative line numbers
+#+BEGIN_SRC emacs-lisp
+(setq doom-line-numbers-style 'relative)
+#+END_SRC
