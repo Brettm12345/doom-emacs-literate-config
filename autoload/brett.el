@@ -13,8 +13,8 @@
   (doom-project-browse (expand-file-name "~/etc")))
 
 ;;;###autoload
-(defun +brett/find-notes-for-major-mode ()
-  "TODO"
+(defun +brett/find-notes-for-major-mode (&optional arg)
+  "Find org mode documentation for current major mode"
   (interactive)
   (let ((default-directory (expand-file-name "code/" +org-dir)))
     (if arg
@@ -23,8 +23,8 @@
        (expand-file-name (concat (string-remove-suffix "-mode" (symbol-name major-mode)) ".org"))))))
 
 ;;;###autoload
-(defun +brett/find-notes-for-project ()
-  "TODO"
+(defun +brett/find-notes-for-project (&optional arg)
+  "Find notes for the current project"
   (interactive)
   (let ((default-directory (expand-file-name "projects/" +org-dir)))
     (if arg
