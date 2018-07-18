@@ -1,0 +1,10 @@
+#+TITLE: doom-emacs-private
+
+* doom-emacs-private
+My private module for [[github:hlissner/doom-emacs][doom-emacs]]
+
+
+* Install
+#+BEGIN_SRC sh
+git clone git@github.com:Brettm12345/doom-emacs-private ~/.config/doom
+#+END_SRC
