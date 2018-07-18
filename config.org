@@ -2,6 +2,27 @@
 #+AUTHOR: Brett Mandler <brettmandler@gmail.com>
 #+PROPERTY: header-args :tangle yes
 
+* Table of Contents :TOC_3_gh:
+- [[#configuration][Configuration]]
+  - [[#personal-information][Personal Information]]
+  - [[#general-settings][General settings]]
+    - [[#general][General]]
+    - [[#interface][Interface]]
+  - [[#keybinds][Keybinds]]
+    - [[#global-keybinds][Global keybinds]]
+    - [[#leader-keybinds][Leader keybinds]]
+  - [[#doom-modules][Doom modules]]
+    - [[#appemail][app/email]]
+    - [[#emacseshell][emacs/eshell]]
+    - [[#emacsterm][emacs/term]]
+    - [[#featureevil][feature/evil]]
+    - [[#langjavascript][lang/javascript]]
+    - [[#langorg][lang/org]]
+    - [[#langsh][lang/sh]]
+    - [[#langweb][lang/web]]
+    - [[#toolsmagit][tools/magit]]
+    - [[#uidoom][ui/doom]]
+
 * Configuration
 :PROPERTIES:
 :VISIBILITY: children
