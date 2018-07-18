@@ -21,6 +21,23 @@
 ;; Keybindings
 ;;
 
+;; Global keybinds
+(map!
+  ;; evil-replace-with-register
+  :nv "gr" #'evil-replace-with-register
+
+  ;; evil-lion
+  :nv "gl" #'evil-lion-left
+  :nv "gL" #'evil-lion-right
+
+  ;; vim-vinegar
+  :m  "-"  #'dired-jump
+
+  ;; vim-unimpaired
+  :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
+  :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
+
+;; <leader>
 (map!
  (:leader
    (:prefix "TAB"
@@ -30,13 +47,7 @@
      :desc "Browse dotfiles"       :n "T" #'+brett/browse-dotfiles)
    (:prefix "n"
      :desc "Browse mode notes"     :n  "m" #'+brett/find-notes-for-major-mode
-     :desc "Browse project notes"  :n  "p" #'+brett/find-notes-for-project))
- :m  "-"  #'dired-jump
- :nv "gr" #'evil-replace-with-register
- :nv "gl" #'evil-lion-left
- :nv "gL" #'evil-lion-right
- :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
- :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
+     :desc "Browse project notes"  :n  "p" #'+brett/find-notes-for-project)))
 
 ;;
 ;; Modules
@@ -134,5 +145,3 @@
 ;; tools/term
 (after! multi-term
   (setq multi-term-program "/usr/bin/fish"))
-
-
