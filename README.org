@@ -1,6 +1,5 @@
 #+TITLE: doom-emacs-private
 
-* doom-emacs-private
 My private module for [[github:hlissner/doom-emacs][doom-emacs]]
 
 
