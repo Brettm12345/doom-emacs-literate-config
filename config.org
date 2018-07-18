@@ -96,22 +96,57 @@ IMAPStore gmail-remote
 Account gmail
 
 MaildirStore gmail-local
-Subfolders Verbatim
 Path ~/var/mail/gmail.com/
 Inbox ~/var/mail/gmail.com/Inbox
 
-Channel gmail
+Channel gmail-inbox
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Patterns "INBOX"
 Create Both
+Expunge Both
 SyncState *
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Bin"
+Slave :gmail-local:"Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:"Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-all
+Master :gmail-remote:"[Gmail]/All Mail"
+Slave :gmail-local:"All Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-all
+Master :gmail-remote:"[Gmail]/Drafts"
+Slave :gmail-local:"Drafts"
+Create Both
+Expunge Both
+SyncState *
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-trash
+Channel gmail-all
 #+END_SRC
 ****** Emacs setup
 Configure emacs to use mbsync as the ~mu4e-get-mail-command~
 #+BEGIN_SRC emacs-lisp
 (after! mu4e
-  (setq mu4e-get-mail-command "mbsync -c '~/.config/mbsync/config' -a"))
+  (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/config -a"))
 #+END_SRC
 ***** Mu4e
 ****** Directories
