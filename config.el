@@ -33,6 +33,8 @@
      :desc "Browse project notes"  :n  "p" #'+brett/find-notes-for-project))
  :m  "-"  #'dired-jump
  :nv "gr" #'evil-replace-with-register
+ :nv "gl" #'evil-lion-left
+ :nv "gL" #'evil-lion-right
  :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
  :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
 
@@ -86,15 +88,12 @@
 
 ;; feature/evil
 (def-package! evil-lion
-  :when (featurep! :feature evil)
-  :config
-  (evil-lion-mode))
+  :commands (evil-lion-left evil-lion-right)
+  :when (featurep! :feature evil))
 
 (def-package! evil-replace-with-register
-  :commands (evil-replace-with-register-install)
-  :when (featurep! :feature evil)
-  :config
-  (evil-replace-with-register-install))
+  :commands (evil-replace-with-register)
+  :when (featurep! :feature evil))
 
 ;; lang/javascript
 (after! js2-mode
