@@ -1,6 +1,5 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-
 (doom! :feature
        eval
        (evil +everywhere)
@@ -61,7 +60,6 @@
        cc
        data
        emacs-lisp
-       fish
        go
        (haskell +intero)
        markdown
@@ -75,7 +73,7 @@
        python
        rest
        rust
-       sh
+       (sh +fish)
        web
 
        :app
