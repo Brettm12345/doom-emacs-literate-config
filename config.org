@@ -96,8 +96,8 @@ IMAPStore gmail-remote
 Account gmail
 
 MaildirStore gmail-local
-Path ~/var/mail/gmail.com/
-Inbox ~/var/mail/gmail.com/Inbox
+Path ~/var/mail/
+Inbox ~/var/mail/Inbox
 
 Channel gmail-inbox
 Master :gmail-remote:
@@ -178,10 +178,10 @@ Configure smtp and folders to work well with gmail
       smtpmail-smtp-service 587)
 
 (set-email-account! "gmail.com"
-                    '((mu4e-sent-folder       . "/gmail.com/Sent Mail")
-                      (mu4e-drafts-folder     . "/gmail.com/Drafts")
-                      (mu4e-trash-folder      . "/gmail.com/Trash")
-                      (mu4e-refile-folder     . "/gmail.com/All Mail")
+                    '((mu4e-sent-folder       . "Sent Mail")
+                      (mu4e-drafts-folder     . "Drafts")
+                      (mu4e-trash-folder      . "Trash")
+                      (mu4e-refile-folder     . "All Mail")
                       (smtpmail-smtp-user     . "brettmandler")
                       (user-mail-address      . "brettmandler@gmail.com")))
 #+END_SRC
