@@ -24,7 +24,7 @@
 ;; Global keybinds
 (map!
   ;; evil-replace-with-register
-  :nv "gr" #'evil-replace-with-register
+  :nv "go" #'evil-replace-with-register
 
   ;; evil-lion
   :nv "gl" #'evil-lion-left
