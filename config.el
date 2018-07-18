@@ -136,6 +136,7 @@
       magit-rebase-arguments '("--autostash" "--gpg-sign=72B1D27CB7D82F0F")
       magit-pull-arguments   '("--rebase" "--autostash" "--gpg-sign=72B1D27CB7D82F0F")
       +magit-hub-features t
+      magithub-preferred-remote-method 'git_url
       magithub-clone-default-directory "~/src/github.com")
 
 (after! magit
