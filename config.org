@@ -88,7 +88,7 @@ Configure mbsync to fetch emails /see also:/ https://wiki.archlinux.org/index.ph
 IMAPAccount gmail
 Host imap.gmail.com
 User brettmandler@gmail.com
-PassCmd "gopass websites/google.com/brettmandler | head -n 1"
+PassCmd "gopass show -o -f websites/gmail.com/brettmandler"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -97,8 +97,8 @@ Account gmail
 
 MaildirStore gmail-local
 Subfolders Verbatim
-Path ~/var/mail/
-Inbox ~/var/mail/Inbox
+Path ~/var/mail/gmail.com/
+Inbox ~/var/mail/gmail.com/Inbox
 
 Channel gmail
 Master :gmail-remote:
