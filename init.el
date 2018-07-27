@@ -31,7 +31,6 @@
        fci
        hl-todo
        nav-flash
-       neotree
        treemacs
        vc-gutter
        vi-tilde-fringe
