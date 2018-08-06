@@ -13,6 +13,7 @@
     - [[#leader-keybinds][Leader keybinds]]
   - [[#doom-modules][Doom modules]]
     - [[#appemail][app/email]]
+    - [[#completionivy][completion/ivy]]
     - [[#emacseshell][emacs/eshell]]
     - [[#emacsterm][emacs/term]]
     - [[#featureevil][feature/evil]]
@@ -178,12 +179,17 @@ Configure smtp and folders to work well with gmail
       smtpmail-smtp-service 587)
 
 (set-email-account! "gmail.com"
-                    '((mu4e-sent-folder       . "Sent Mail")
-                      (mu4e-drafts-folder     . "Drafts")
-                      (mu4e-trash-folder      . "Trash")
-                      (mu4e-refile-folder     . "All Mail")
+                    '((mu4e-sent-folder       . "/Sent Mail")
+                      (mu4e-drafts-folder     . "/Drafts")
+                      (mu4e-trash-folder      . "/Trash")
+                      (mu4e-refile-folder     . "/All Mail")
                       (smtpmail-smtp-user     . "brettmandler")
                       (user-mail-address      . "brettmandler@gmail.com")))
+#+END_SRC
+*** [[doom-modules:completion/ivy/][completion/ivy]]
+Set ripgrep as the default program for ivy project search
+#+BEGIN_SRC emacs-lisp
+(setq +ivy-project-search-engines '(rg))
 #+END_SRC
 *** [[doom-modules:emacs/eshell/][emacs/eshell]]
 Set aliases for emacs shell
@@ -210,21 +216,21 @@ Evil lion is a package for aligning text using the keybinds ~gl~ to align left
 and ~gL~ to align right
 #+BEGIN_SRC emacs-lisp
 (def-package! evil-lion
-  :commands (evil-lion-left evil-lion-right)
+  :commands (evil-lion-mode)
   :when (featurep! :feature evil)
   :config
-  (map! :nv "gl" #'evil-lion-left
-        :nv "gL" #'evil-lion-right))
+  (evil-lion-mode))
+
 #+END_SRC
 **** [[github:emacsmirror/evil-replace-with-register][evil-replace-with-register]]
 Evil replace with register is a package which allows a user to replace a text
 object with the content of the register I have it bound to ~go~
 #+BEGIN_SRC emacs-lisp
 (def-package! evil-replace-with-register
-  :commands (evil-replace-with-register)
+  :commands (evil-replace-with-register-install)
   :when (featurep! :feature evil)
   :config
-  (map! :nv "go" #'evil-replace-with-register))
+  (evil-replace-with-register-install))
 #+END_SRC
 *** [[doom-modules:lang/javascript/][lang/javascript]]
 Set default indentation offset to 2 spaces
@@ -234,6 +240,10 @@ Set default indentation offset to 2 spaces
 Enable bounce indentation
 #+BEGIN_SRC emacs-lisp
 (after! js2-mode (setq js2-bounce-indent-p t))
+#+END_SRC
+Automatically reformat buffer
+#+BEGIN_SRC emacs-lisp
+(add-hook! 'js2-mode-hook 'eslintd-fix-mode)
 #+END_SRC
 *** [[doom-modules:lang/org/][lang/org]]
 Set default directories for org files
