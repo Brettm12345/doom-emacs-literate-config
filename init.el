@@ -1,5 +1,8 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+(setenv "SHELL" "/bin/dash")
+(setq explicit-shell-file-name "/bin/dash")
+
 (doom! :feature
        eval
        (evil +everywhere)
@@ -14,7 +17,7 @@
 
        :completion
        (company +childframe)
-       (ivy +childframe)
+       (ivy +childframe +fuzzy)
 
        :editor
        parinfer
@@ -32,6 +35,7 @@
        hl-todo
        nav-flash
        treemacs
+       unicode
        vc-gutter
        vi-tilde-fringe
        window-select
@@ -79,6 +83,6 @@
        (email +gmail)
 
        :config
-       (default +bindings +evil-commands)
+       (default +bindings +evil-commands +snippets)
        literate)
 
