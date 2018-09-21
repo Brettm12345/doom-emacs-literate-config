@@ -64,6 +64,13 @@ Sort a region with ~gS~
 #+BEGIN_SRC emacs-lisp
 (map! :m "gS" #'+brett/sort)
 #+END_SRC
+Easy window navigation
+#+BEGIN_SRC emacs-lisp
+(after! evil
+  (map! :en "C-h"   #'evil-window-left
+        :en "C-j"   #'evil-window-down
+        :en "C-k"   #'evil-window-up
+        :en "C-l"   #'evil-window-right))
 #+END_SRC
 *** Leader keybinds
 #+BEGIN_SRC emacs-lisp
