@@ -263,17 +263,56 @@ Set bookmarks for easily finding messages
 Configure smtp and folders to work well with gmail
 #+BEGIN_SRC emacs-lisp
 (setq smtpmail-stream-type 'starttls
+      smtpmail-smtp-user "brettmandler"
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
 
-(set-email-account! "gmail.com"
-                    '((mu4e-sent-folder       . "/Sent Mail")
-                      (mu4e-drafts-folder     . "/Drafts")
-                      (mu4e-trash-folder      . "/Trash")
-                      (mu4e-refile-folder     . "/All Mail")
-                      (smtpmail-smtp-user     . "brettmandler")
-                      (user-mail-address      . "brettmandler@gmail.com")))
+(setq mu4e-sent-folder "/Sent Mail"
+      mu4e-drafts-folder "/Drafts"
+      mu4e-trash-folder "/Trash"
+      mu4e-refile-folder "/All Mail")
+      
+(setq mu4e-maildir-shortcuts
+      '(("/Inbox"     . ?i)
+        ("/Sent Mail" . ?s)
+        ("/All Mail"  . ?a)
+        ("/Trash"     . ?t)))
+#+END_SRC
+****** Bookmarks
+Set bookmarks for easily finding messages
+#+BEGIN_SRC emacs-lisp
+(setq mu4e-bookmarks
+    `(("maildir:/Inbox" "Inbox" ?i)
+        ("maildir:/Drafts" "Drafts" ?d)
+        ("flag:unread AND maildir:/Inbox" "Unread messages" ?u)
+        ("flag:flagged" "Starred messages" ?s)
+        ("date:today..now" "Today's messages" ?t)
+        ("date:7d..now" "Last 7 days" ?w)
+        ("mime:image/*" "Messages with images" ?p)))
+
+#+END_SRC
+****** Icons
+#+BEGIN_SRC emacs-lisp
+(after! mu4e 
+  (setq mu4e-use-fancy-chars t)
+  (setq mu4e-headers-has-child-prefix '("+" . "◼")
+        mu4e-headers-empty-parent-prefix '("-" ."◽")
+        mu4e-headers-first-child-prefix '("\\" . "↳")
+        mu4e-headers-duplicate-prefix '("=" . "⚌")
+        mu4e-headers-default-prefix '("|" . "┃")
+        mu4e-headers-draft-mark '("D" . "📝 ")
+        mu4e-headers-flagged-mark '("F" . "🏴 ")
+        mu4e-headers-new-mark '("N" . "★ ")
+        mu4e-headers-passed-mark '("P" . "→ ")
+        mu4e-headers-replied-mark '("R" . "← ")
+        mu4e-headers-seen-mark '("S" . "✓ ")
+        mu4e-headers-trashed-mark '("T" . "✗ ")
+        mu4e-headers-attach-mark '("a" . "📎 ")
+        mu4e-headers-encrypted-mark '("x" . "🔐 ")
+        mu4e-headers-signed-mark '("s" . "🔏 ")
+        mu4e-headers-unread-mark '("u" . "✉ ")))
+#+END_SRC
 *** app/torrent
 Use transmission as the emacs torrent client
 #+BEGIN_SRC emacs-lisp
