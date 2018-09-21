@@ -48,10 +48,6 @@ Highlight trailing whitespace
 #+BEGIN_SRC emacs-lisp
 (setq show-trailing-whitespace t)
 #+END_SRC
-Make comments italic
-#+BEGIN_SRC emacs-lisp
-(make-face-italic font-lock-comment-face)
-#+END_SRC
 ** Keybinds
 *** Global keybinds
 Use ~-~ to jump up to the previous directory like with [[github:tpope/vim-vinegar][vim-vinegar]]
