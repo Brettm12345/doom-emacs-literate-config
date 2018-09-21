@@ -468,12 +468,12 @@ I like to use [[github:be5invis/Iosevka][Iosevka]] as my programming font
 ***** Default font 
 ~doom-font~ is the default font for emacs to use
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Iosevka Custom Term Medium" :size 50))
+(setq doom-font (font-spec :family "Iosevka Term Custom Medium" :size 22))
 #+END_SRC
 ***** Variable pitch
 ~doom-variable-pitch-font~ is a proportonal font used for reading emails, doc etc.
 #+BEGIN_SRC emacs-lisp
-(setq doom-variable-pitch-font (font-spec :family "Roboto Condensed" :size 20))
+(setq doom-variable-pitch-font (font-spec :family "Roboto Condensed" :size 18))
 #+END_SRC
 ***** Big font
 ~doom-big-font~ is the default font to use for ~doom-big-font-mode~
