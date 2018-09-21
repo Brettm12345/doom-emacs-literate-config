@@ -254,20 +254,6 @@ Setup the deafault /maildirs/
 (setq mu4e-maildir        (expand-file-name "~/var/mail")
       mu4e-attachment-dir (expand-file-name "attachments" mu4e-maildir))
 #+END_SRC
-****** Bookmarks
-Set bookmarks for easily finding messages
-#+BEGIN_SRC emacs-lisp
-(after! mu4e
-  (setq mu4e-bookmarks
-        `(("\\\\Inbox" "Inbox" ?i)
-          ("\\\\Draft" "Drafts" ?d)
-          ("flag:unread AND \\\\Inbox" "Unread messages" ?u)
-          ("flag:flagged" "Starred messages" ?s)
-          ("date:today..now" "Today's messages" ?t)
-          ("date:7d..now" "Last 7 days" ?w)
-          ("mime:image/*" "Messages with images" ?p))))
-
-#+END_SRC
 ****** Gmail setup
 Configure smtp and folders to work well with gmail
 #+BEGIN_SRC emacs-lisp
