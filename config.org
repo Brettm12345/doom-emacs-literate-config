@@ -331,6 +331,10 @@ Enable bounce indentation
 (after! js2-mode (setq js2-bounce-indent-p t))
 #+END_SRC
 Automatically reformat buffer
+Auto format buffers
+#+BEGIN_SRC emacs-lisp
+(after! js2-mode (add-hook 'js2-mode-hook 'eslintd-fix-mode))
+#+END_SRC
 #+BEGIN_SRC emacs-lisp
 (add-hook! 'js2-mode-hook 'eslintd-fix-mode)
 #+END_SRC
