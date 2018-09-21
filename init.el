@@ -16,10 +16,11 @@
        workspaces
 
        :completion
-       (company +childframe)
-       (ivy +childframe +fuzzy)
+       (company +auto +childframe)
+       (ivy +fuzzy)
 
        :editor
+       format
        parinfer
        rotate-text
 
