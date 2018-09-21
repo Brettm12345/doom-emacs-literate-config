@@ -29,9 +29,9 @@
        (pretty-code +fira)
        doom
        doom-dashboard
-       doom-modeline
        doom-quit
        evil-goggles
+       modeline
        fci
        hl-todo
        nav-flash
