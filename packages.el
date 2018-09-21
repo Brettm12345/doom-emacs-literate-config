@@ -12,4 +12,3 @@
 
 ;; lang/sh
 (package! flycheck-checkbashisms)
-

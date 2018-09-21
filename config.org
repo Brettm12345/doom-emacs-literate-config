@@ -11,8 +11,11 @@
   - [[#keybinds][Keybinds]]
     - [[#global-keybinds][Global keybinds]]
     - [[#leader-keybinds][Leader keybinds]]
+    - [[#mu4e][Mu4e]]
+    - [[#treemacs][Treemacs]]
   - [[#doom-modules][Doom modules]]
     - [[#appemail][app/email]]
+    - [[#apptorrent][app/torrent]]
     - [[#completionivy][completion/ivy]]
     - [[#emacseshell][emacs/eshell]]
     - [[#emacsterm][emacs/term]]
@@ -159,6 +162,7 @@ Easy window navigation
             :n "r" #'mu4e-view-mark-for-refile
             :n "m" #'mu4e-view-mark-for-move))))
 
+#+END_SRC
 *** Treemacs
 Allow ~C-h~ and ~C-l~ to switch buffers
 #+BEGIN_SRC emacs-lisp
@@ -388,7 +392,6 @@ Enable bounce indentation
 #+BEGIN_SRC emacs-lisp
 (after! js2-mode (setq js2-bounce-indent-p t))
 #+END_SRC
-Automatically reformat buffer
 Auto format buffers
 #+BEGIN_SRC emacs-lisp
 (after! js2-mode (add-hook 'js2-mode-hook 'eslintd-fix-mode))
@@ -433,7 +436,7 @@ Set default indentation for css to 2 spaces
   (setq css-indent-offset 2))
 #+END_SRC
 *** [[doom-modules:tools/magit/][tools/magit]]
-Set default location for ~magit-list-repositories~ 
+Set default location for ~magit-list-repositories~
 #+BEGIN_SRC emacs-lisp
 (setq magit-repository-directories '(("~/src" . 3) ("~/.emacs.d") ("~/.config/doom")))
 #+END_SRC
