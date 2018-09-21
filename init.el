@@ -20,7 +20,7 @@
        (ivy +fuzzy)
 
        :editor
-       format
+       (format +onsave)
        parinfer
        rotate-text
 
