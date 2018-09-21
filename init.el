@@ -1,7 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(setenv "SHELL" "/bin/dash")
-(setq explicit-shell-file-name "/bin/dash")
+(setenv "SHELL" "/usr/bin/fish")
+(setq explicit-shell-file-name "/usr/bin/fish")
 
 (doom! :feature
        eval
