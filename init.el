@@ -86,4 +86,3 @@
        :config
        (default +bindings +evil-commands +snippets)
        literate)
-
