@@ -337,4 +337,5 @@ I like to use [[github:be5invis/Iosevka][Iosevka]] as my programming font
 Use vim-esque relative line numbers
 #+BEGIN_SRC emacs-lisp
 (setq doom-line-numbers-style 'relative)
+(setq display-line-numbers-type 'relative)
 #+END_SRC
