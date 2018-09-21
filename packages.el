@@ -5,7 +5,6 @@
 (package! transmission)
 
 ;; feature/evil
-(package! evil-lion)
 (package! evil-replace-with-register)
 
 ;; lang/javascript

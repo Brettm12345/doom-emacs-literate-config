@@ -373,17 +373,6 @@ Use fish as my default shell
   (setq multi-term-program "/usr/bin/fish"))
 #+END_SRC
 *** [[doom-modules:feature/evil/][feature/evil]]
-**** [[github:edkolev/evil-lion][evil-lion]]
-Evil lion is a package for aligning text using the keybinds ~gl~ to align left
-and ~gL~ to align right
-#+BEGIN_SRC emacs-lisp
-(def-package! evil-lion
-  :commands (evil-lion-mode)
-  :when (featurep! :feature evil)
-  :config
-  (evil-lion-mode))
-
-#+END_SRC
 **** [[github:emacsmirror/evil-replace-with-register][evil-replace-with-register]]
 Evil replace with register is a package which allows a user to replace a text
 object with the content of the register I have it bound to ~go~
