@@ -366,8 +366,12 @@ Auto format buffers
 #+BEGIN_SRC emacs-lisp
 (after! js2-mode (add-hook 'js2-mode-hook 'eslintd-fix-mode))
 #+END_SRC
+Add support for yarn
 #+BEGIN_SRC emacs-lisp
-(add-hook! 'js2-mode-hook 'eslintd-fix-mode)
+(def-package! yarn
+  :after js2-mode
+  :config
+  (setq yarn-vars-test-cmd "yarn test"))
 #+END_SRC
 *** [[doom-modules:lang/org/][lang/org]]
 Set default directories for org files
