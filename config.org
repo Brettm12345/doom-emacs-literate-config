@@ -488,6 +488,7 @@ Use vim-esque relative line numbers
 **** Theme
 #+BEGIN_SRC emacs-lisp
 (make-face-bold font-lock-function-name-face)
+(make-face-bold js2-function-call)
 (make-face-italic font-lock-comment-face)
 (setq doom-theme 'doom-tomorrow-night)
 (setq doom-themes-padded-modeline t)
