@@ -60,6 +60,10 @@ Use ~] SPC~ and ~[ SPC~ to insert newlines above/below like with [[github:tpope/
 #+BEGIN_SRC emacs-lisp
 (map! :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
       :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
+Sort a region with ~gS~
+#+BEGIN_SRC emacs-lisp
+(map! :m "gS" #'+brett/sort)
+#+END_SRC
 #+END_SRC
 *** Leader keybinds
 #+BEGIN_SRC emacs-lisp
