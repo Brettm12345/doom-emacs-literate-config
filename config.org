@@ -56,12 +56,15 @@ Make comments italic
 *** Global keybinds
 Use ~-~ to jump up to the previous directory like with [[github:tpope/vim-vinegar][vim-vinegar]]
 #+BEGIN_SRC emacs-lisp
-(map! :m  "-"  #'dired-jump)
+(after! evil
+    (map! :m  "-"  #'dired-jump))
 #+END_SRC
 Use ~] SPC~ and ~[ SPC~ to insert newlines above/below like with [[github:tpope/vim-unimpaired][vim-unimpaired]]
 #+BEGIN_SRC emacs-lisp
-(map! :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
-      :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line)))
+(after! evil
+    (map! :n  "] SPC" (λ! (evil-insert-newline-below)(evil-previous-line))
+        :n  "[ SPC" (λ! (evil-insert-newline-above)(evil-next-line))))
+#+END_SRC
 Sort a region with ~gS~
 #+BEGIN_SRC emacs-lisp
 (map! :m "gS" #'+brett/sort)
