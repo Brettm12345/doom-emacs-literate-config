@@ -163,6 +163,15 @@ Easy window navigation
             :n "r" #'mu4e-view-mark-for-refile
             :n "m" #'mu4e-view-mark-for-move))))
 
+*** Treemacs
+Allow ~C-h~ and ~C-l~ to switch buffers
+#+BEGIN_SRC emacs-lisp
+(map!
+ (:after treemacs-evil
+   (:map evil-treemacs-state-map
+     "C-h" #'evil-window-left
+     "C-l" #'evil-window-right)))
+#+END_SRC
 ** Doom modules
 *** [[doom-modules:app/email/][app/email]]
 **** Install
