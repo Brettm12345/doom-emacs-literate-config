@@ -274,6 +274,14 @@ Configure smtp and folders to work well with gmail
                       (mu4e-refile-folder     . "/All Mail")
                       (smtpmail-smtp-user     . "brettmandler")
                       (user-mail-address      . "brettmandler@gmail.com")))
+*** app/torrent
+Use transmission as the emacs torrent client
+#+BEGIN_SRC emacs-lisp
+(def-package! transmission
+  :config
+  (setq transmission-host "localhost"
+        transmission-service 9091))
+
 #+END_SRC
 *** [[doom-modules:completion/ivy/][completion/ivy]]
 Set ripgrep as the default program for ivy project search

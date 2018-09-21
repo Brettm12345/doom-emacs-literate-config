@@ -1,6 +1,9 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.config/doom/packages.el
 
+;; app/transmission
+(package! transmission)
+
 ;; feature/evil
 (package! evil-lion)
 (package! evil-replace-with-register)
