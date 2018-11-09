@@ -47,6 +47,7 @@ Resize the frame pixelwise. Making emacs compatible with tiling window managers
 #+END_SRC
 Save the current window size and position
 (desktop-save-mode 1)
+
 *** Interface
 Highlight trailing whitespace
 #+BEGIN_SRC emacs-lisp
