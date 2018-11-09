@@ -473,12 +473,17 @@ I like to use [[github:be5invis/Iosevka][Iosevka]] as my programming font
 ***** Variable pitch
 ~doom-variable-pitch-font~ is a proportonal font used for reading emails, doc etc.
 #+BEGIN_SRC emacs-lisp
-(setq doom-variable-pitch-font (font-spec :family "Roboto Condensed" :size 18))
+(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :weight 'medium :width 'extra-condensed :size 18))
+#+END_SRC
+***** Serif
+~doom-serif-font~ is a font used for the ~fixed-pitch-serif~ face
+#+BEGIN_SRC emacs-lisp
+(setq doom-serif-font (font-spec :family "Noto Serif" :weight 'semi-bold :width 'extra-condensed ))
 #+END_SRC
 ***** Big font
 ~doom-big-font~ is the default font to use for ~doom-big-font-mode~
 #+BEGIN_SRC emacs-lisp
-(setq doom-big-font (font-spec :family "Iosevka Custom Term Medium" :size 24))
+(setq doom-big-font (font-spec :family "Iosevka Term Custom Medium" :size 24))
 #+END_SRC
 **** Line Numbers
 Use vim-esque relative line numbers
