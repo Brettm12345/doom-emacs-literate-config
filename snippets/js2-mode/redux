@@ -12,24 +12,24 @@ const { Types, Creators } = createActions({
       $1
 });
 
-export const HeaderTypes = Types;
+export const $2Types = Types;
 export default Creators;
 
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-       $2
+       $3
 });
 
 /* ------------- Reducers ------------- */
 
-$3
+$4
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-       $4
+       $5
 });
 
 /* ------------- Selectors ------------- */
-$5
+$6

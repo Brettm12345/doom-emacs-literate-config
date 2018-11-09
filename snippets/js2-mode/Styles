@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Styles
+# key: styles
+# --
+const styles = theme => ({
+  $1
+});
+
+export default styles;
