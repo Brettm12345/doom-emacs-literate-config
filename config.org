@@ -26,6 +26,7 @@
     - [[#langweb][lang/web]]
     - [[#toolsmagit][tools/magit]]
     - [[#uidoom][ui/doom]]
+    - [[#uitreemacs][ui/treemacs]]
 
 * Configuration
 :PROPERTIES:
@@ -471,4 +472,9 @@ Use vim-esque relative line numbers
   (make-face-italic font-lock-comment-face)
   (setq doom-themes-padded-modeline t))
 #+END_SRC
+
+*** [[doom-modules:ui/treemacs/][ui/treemacs]]
+Have treemacs follow the currently open file
+#+BEGIN_SRC emacs-lisp
+(after! treemacs (treemacs-follow-mode))
 #+END_SRC
