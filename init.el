@@ -16,11 +16,11 @@
        workspaces
 
        :completion
-       (company +auto +childframe)
+       (company +childframe)
        (ivy +fuzzy)
 
        :editor
-       (format +onsave)
+       format
        parinfer
        rotate-text
 
@@ -59,6 +59,7 @@
        pdf
        rgb
        tmux
+       upload
 
        :lang
        cc
@@ -67,6 +68,7 @@
        go
        (haskell +intero)
        markdown
+       lua
        javascript
        (org
         +attach
