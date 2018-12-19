@@ -2,8 +2,6 @@
 # name: Styles
 # key: styles
 # --
-const styles = theme => ({
+export default theme => ({
   $1
 });
-
-export default styles;

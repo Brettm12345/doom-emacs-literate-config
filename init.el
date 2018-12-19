@@ -16,12 +16,14 @@
        workspaces
 
        :completion
-       (company +childframe)
-       (ivy +fuzzy)
+       (company +auto +childframe)
+       ;; (helm +fuzzy)
+       (ivy +fuzzy +childframe)
 
        :editor
        format
        parinfer
+       multiple-cursors
        rotate-text
 
        :ui
@@ -42,11 +44,12 @@
        window-select
 
        :emacs
-       dired
+       (dired +icons)
        ediff
        electric
        eshell
        imenu
+       hideshow
        term
        vc
 
@@ -76,6 +79,7 @@
         +capture
         +export
         +present)
+       php
        python
        rest
        rust
@@ -84,6 +88,7 @@
 
        :app
        (email +gmail)
+       regex
 
        :config
        (default +bindings +evil-commands +snippets)
