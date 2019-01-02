@@ -18,14 +18,14 @@
           (save-excursion
             (goto-char (point-min))
             (while (re-search-forward "\\(#\\(?:[0-9a-fA-F]\\{3\\}\\)+\\{1,4\\}\\)" nil t 1)
-              (push 
-               (propertize 
+              (push
+               (propertize
                 (format-mode-line "%l")
-                'hex 
-                (downcase 
+                'hex
+                (downcase
                  (match-string-no-properties 0)))
-               matches))))
-        ) matches)))
+               matches)))))
+      matches)))
 
 ;;;###autoload (autoload 'counsel-hex-colors "~/.config/doom/autoload/ivy" nil t)
 (defun counsel-hex-colors ()

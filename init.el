@@ -17,13 +17,13 @@
 
        :completion
        (company +auto +childframe)
-       ;; (helm +fuzzy)
        (ivy +fuzzy +childframe)
 
        :editor
        format
-       parinfer
+       lispy
        multiple-cursors
+       parinfer
        rotate-text
 
        :ui
