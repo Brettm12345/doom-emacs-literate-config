@@ -14,7 +14,6 @@
 (package! diredfl)
 
 ;; feature/evil
-(package! evil-cleverparens)
 (package! evil-lisp-state)
 
 ;; lang/javascript
