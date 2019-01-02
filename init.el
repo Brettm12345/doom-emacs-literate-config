@@ -89,5 +89,5 @@
        regex
 
        :config
-       (default +bindings +evil-commands +snippets)
+       (default +bindings)
        literate)
