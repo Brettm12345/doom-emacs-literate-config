@@ -11,4 +11,4 @@ make
 #+END_SRC
 
 * Screenshot
-[[img:https://github.com/Brettm12345/doom-emacs-literate-config/blob/master/screenshots/screenshot.png][doom-emacs]]
+![Doom emacs](https://github.com/Brettm12345/doom-emacs-literate-config/blob/master/screenshots/screenshot.png)
