@@ -78,7 +78,7 @@
         +export
         +present)
        php
-       python
+       (python +conda +pyenv)
        rest
        rust
        (sh +fish)
