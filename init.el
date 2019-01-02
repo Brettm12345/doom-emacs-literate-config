@@ -33,12 +33,10 @@
        doom-dashboard
        doom-quit
        evil-goggles
-       modeline
        fci
        hl-todo
        nav-flash
-       treemacs
-       unicode
+       neotree
        vc-gutter
        vi-tilde-fringe
        window-select

@@ -765,13 +765,55 @@ Use vim-esque relative line numbers
 #+RESULTS:
 : t
 *** [[doom-modules:ui/modeline/][ui/modeline]]
-**** Set modeline buffer path
+**** Setup [[github:seagle0128/doom-modeline][doom-modeline]]
 #+BEGIN_SRC emacs-lisp
-(setq +modline-buffer-path-function #'+modeline-buffer-path-from-project)
+(def-package! doom-modeline
+  :defer t
+  :hook (after-init . doom-modeline-init))
+#+END_SRC
+**** Display color icons for ~major-mode~
+#+BEGIN_SRC emacs-lisp
+(after! doom-modeline
+  (setq doom-modeline-major-mode-color-icon t))
 #+END_SRC
 **** Set modeline width
 #+BEGIN_SRC emacs-lisp
-(setq +modeline-width 1)
+(after! doom-modeline
+  (setq doom-modeline-bar-width 3))
+#+END_SRC
+**** Set modeline height
+#+BEGIN_SRC emacs-lisp
+(after! doom-modeline
+  (setq doom-modeline-height 45))
+#+END_SRC
+**** Show github notifications
+#+BEGIN_SRC emacs-lisp
+(after! doom-modeline
+  (setq doom-modeline-github t))
+#+END_SRC
+**** Hide emacs version
+#+BEGIN_SRC emacs-lisp
+(after! doom-modeline
+  (setq doom-modeline-version nil))
+#+END_SRC
+**** Set buffer file name style
+***** Show filename relative from current project =emacs/lisp/comint.el=
+#+BEGIN_SRC emacs-lisp
+(after! doom-modeline
+  (setq doom-modeline-buffer-file-name-style 'relative-from-project))
+#+END_SRC
+***** Examples
+Given =~/Projects/FOSS/emacs/lisp/comint.el=
+| tunricate-upto-project   | ~/P/F/emacs/lisp/comint.el          |
+| turnicate-from-project   | ~/Projects/FOSS/emacs/l/comint.el   |
+| turnicate-with-project   | emacs/l/comint.el                   |
+| turnicate-except-project | ~/P/F/emacs/l/comint.el             |
+| turnicate-upto-root      | ~/P/F/e/lisp/comint.el              |
+| turnicate-all            | ~/P/F/e/l/comint.el                 |
+| relative-from-project    | emacs/lisp/comint.el                |
+| relative-to-project      | lisp/comint.el                      |
+| file-name                | comint.el                           |
+| buffer-name              | comint.el<2> (uniquify buffer name) |
 #+END_SRC
 **** Use a padded modeline
 #+BEGIN_SRC emacs-lisp
