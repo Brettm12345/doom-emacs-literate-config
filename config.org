@@ -788,6 +788,10 @@ Set the doom-dashboard banner to
 (setq +doom-dashboard-banner-dir
       (concat doom-private-dir "banners/"))
 #+END_SRC
+**** Set dashboard image padding
+#+begin_src emacs-lisp
+(setq +doom-dashboard-banner-padding '(4 . 10))
+#+end_src
 *** [[doom-modules:ui/modeline/][ui/modeline]]
 **** Setup [[github:seagle0128/doom-modeline][doom-modeline]]
 #+BEGIN_SRC emacs-lisp
