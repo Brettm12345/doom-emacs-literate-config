@@ -35,6 +35,9 @@
 ;; lang/org
 (package! ob-http)
 
+;; lang/systemd
+(package! systemd)
+
 ;; lang/sh
 (package! flycheck-checkbashisms)
 
