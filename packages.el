@@ -41,12 +41,6 @@
 ;; lang/sh
 (package! flycheck-checkbashisms)
 
-;; lang/xml
-(package! xml+)
-
-;; tools/prodigy
-(package! prodigy)
-
 ;; tools/tldr
 (package! tldr)
 
