@@ -502,15 +502,16 @@ Set bookmarks for easily finding messages
 #+BEGIN_SRC emacs-lisp
 (after! dired-k
   (setq dired-k-size-colors
-        '((1024 .   "#CFECA3")
-          (2048 .   "#C9EA98")
-          (3072 .   "#C3E88D")
-          (10240 .  "#FFD558")
-          (20480 .  "#FFD079")
-          (40960 .  "#FFCB6B")
-          (102400 . "#F8A389")
-          (262144 . "#F7977A")
-          (524288 . "#F78C6C"))))
+        `((1024 .   ,(doom-lighten (doom-color 'green) 0.3))
+          (2048 .   ,(doom-lighten (doom-color 'green) 0.2))
+          (3072 .   ,(doom-lighten (doom-color 'green) 0.1))
+          (5120 .   ,(doom-color 'green))
+          (10240 .  ,(doom-lighten (doom-color 'yellow) 0.2))
+          (20480 .  ,(doom-lighten (doom-color 'yellow) 0.1))
+          (40960 .  ,(doom-color 'yellow))
+          (102400 . ,(doom-lighten (doom-color 'orange) 0.2))
+          (262144 . ,(doom-lighten (doom-color 'orange) 0.1))
+          (524288 . ,(doom-color 'orange)))))
 #+END_SRC
 **** Enable ~diredfl-mode~ on ~dired~ buffers
 #+BEGIN_SRC emacs-lisp
