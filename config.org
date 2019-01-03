@@ -172,6 +172,13 @@ Similar to [[github:tpope/vim-vinegar][vim-vinegar]]
           :map evil-org-mode-map
           "/" #'counsel-org-goto)))
 #+END_SRC
+**** Dired
+#+BEGIN_SRC emacs-lisp
+(map!
+ (:after dired
+    (:map dired-mode-map
+    "C-SPC" #'peep-dired)))
+#+END_SRC
 **** Treemacs
 Allow ~C-h~ and ~C-l~ to switch buffers
 #+BEGIN_SRC emacs-lisp
@@ -517,6 +524,13 @@ Set bookmarks for easily finding messages
 #+BEGIN_SRC emacs-lisp
 (def-package! diredfl
   :hook (dired-mode . diredfl-mode))
+#+END_SRC
+**** Setup ~peep-dired~
+#+BEGIN_SRC emacs-lisp
+(def-package! peep-dired
+  :after dired
+  :defer t
+  :commands (peep-dired))
 #+END_SRC
 *** [[doom-modules:emacs/eshell/][emacs/eshell]]
 **** Set ~eshell~ aliases
