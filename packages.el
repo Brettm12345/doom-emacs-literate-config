@@ -16,6 +16,9 @@
 ;; feature/evil
 (package! evil-lisp-state)
 
+;; feature/snippets
+(package! yasnippet-snippets)
+
 ;; lang/javascript
 (package! import-js)
 (package! yarn :recipe (:fetcher github :repo "jmfirth/yarn.el"))
