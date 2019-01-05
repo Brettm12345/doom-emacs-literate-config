@@ -483,7 +483,7 @@ Set bookmarks for easily finding messages
 #+BEGIN_SRC emacs-lisp
 (def-package! all-the-icons-ivy
   :after ivy
-  :init
+  :config
   (dolist (cmd '( counsel-find-file
                   counsel-file-jump
                   projectile-find-file
