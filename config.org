@@ -191,7 +191,7 @@ Allow ~C-h~ and ~C-l~ to switch buffers
 **** Show keybind help with less of a delay
 #+BEGIN_SRC emacs-lisp
 (after! which-key
-  (setq which-key-idle-delay 0.1
+  (setq which-key-idle-delay 0.5
         which-key-idle-secondary-delay 0.01
         which-key-sort-order 'which-key-key-order-alpha))
 #+END_SRC
