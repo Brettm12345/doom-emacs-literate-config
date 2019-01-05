@@ -104,7 +104,7 @@ Highlight indentation based on current line
 **** Set colors
 #+BEGIN_SRC emacs-lisp
 (after! highlight-indent-guides
-  (setq highlight-indent-guides-auto-enabled top)
+  (setq highlight-indent-guides-auto-enabled 'top)
   (set-face-attribute 'highlight-indent-guides-odd-face nil :inherit 'highlight-indentation-odd-face)
   (set-face-attribute 'highlight-indent-guides-even-face nil :inherit 'highlight-indentation-even-face)
   (set-face-foreground 'highlight-indent-guides-character-face (doom-color 'base5)))
