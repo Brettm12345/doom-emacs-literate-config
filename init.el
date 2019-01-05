@@ -88,5 +88,5 @@
        regex
 
        :config
-       (default +bindings)
+       (default +bindings +smartparens)
        literate)
