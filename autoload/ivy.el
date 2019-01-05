@@ -23,11 +23,6 @@
          matches)))
     matches))
 
-;; #ffffff
-;; #eeeeee
-;; #aaaaaa
-
-
 ;;;###autoload (autoload 'counsel-hex-colors "~/.config/doom/autoload/ivy" nil t)
 (defun counsel-hex-colors ()
   "Open a list of hex colors in the current buffer to select with ivy"
