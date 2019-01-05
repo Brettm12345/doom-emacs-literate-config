@@ -19,10 +19,6 @@
 ;; feature/snippets
 (package! yasnippet-snippets)
 
-;; lang/javascript
-(package! import-js)
-(package! yarn :recipe (:fetcher github :repo "jmfirth/yarn.el"))
-
 ;; lang/apache
 (package! apache-mode)
 
