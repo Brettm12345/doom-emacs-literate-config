@@ -13,9 +13,6 @@
 (package! peep-dired)
 (package! diredfl)
 
-;; feature/evil
-(package! evil-lisp-state)
-
 ;; feature/snippets
 (package! yasnippet-snippets)
 

@@ -30,7 +30,6 @@
     - [[#editorparinfer][editor/parinfer]]
     - [[#emacsterm][emacs/term]]
     - [[#emacsvc][emacs/vc]]
-    - [[#featureevil][feature/evil]]
     - [[#featureworkspaces][feature/workspaces]]
     - [[#langjavascript][lang/javascript]]
     - [[#langorg][lang/org]]
@@ -587,13 +586,6 @@ Have ={{{= =}}}= indicate folds in any file
 **** Folow symlinks when opening files
 #+BEGIN_SRC emacs-lisp
 (setq vc-follow-symlinks t)
-#+END_SRC
-*** [[doom-modules:feature/evil/][feature/evil]]
-**** [[github:syl20bnr/evil-lisp-state][evil-lisp-state]]
-#+BEGIN_SRC emacs-lisp
-(def-package! evil-lisp-state
-  :init (setq evil-lisp-state-global t)
-  :config (evil-lisp-state-leader "SPC m l"))
 #+END_SRC
 *** [[doom-modules:feature/workspaces/][feature/workspaces]]
 **** Create new workspaces when switching projects
