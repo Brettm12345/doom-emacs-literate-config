@@ -57,7 +57,6 @@
        make
        magit
        password-store
-       pdf
        rgb
        tmux
        upload
