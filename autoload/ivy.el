@@ -3,29 +3,30 @@
 ;;;###autoload (autoload 'counsel--hex-colors-action "~/.config/doom/autoload/ivy" nil t)
 (defun counsel--hex-colors-action (string)
   "Jumps to the line that a color is on"
-  (let* ((start 0)
-         (end (length string)))
-    (set-text-properties 0 (length string) nil string)
-    (goto-line (string-to-number string))))
+  (set-text-properties 0 (length string) nil string)
+  (goto-line (string-to-number string)))
 
 ;;;###autoload (autoload 'counsel--hex-colors-candidates "~/.config/doom/autoload/ivy" nil t)
 (defun counsel--hex-colors-candidates ()
   "Return a list of `counsel-hex-colors' candidates."
   (let ((matches))
-    (save-match-data
-      (save-excursion
-        (with-current-buffer (current-buffer)
-          (save-excursion
-            (goto-char (point-min))
-            (while (re-search-forward "\\(#\\(?:[0-9a-fA-F]\\{3\\}\\)+\\{1,4\\}\\)" nil t 1)
-              (push
-               (propertize
-                (format-mode-line "%l")
-                'hex
-                (downcase
-                 (match-string-no-properties 0)))
-               matches)))))
-      matches)))
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward "\\(#\\(?:[0-9a-fA-F]\\{3\\}\\)+\\{1,4\\}\\)" nil t 1)
+        (push
+         (propertize
+          (number-to-string (line-number-at-pos (point)))
+          'face 'font-lock-function-name-face
+          'hex
+          (downcase
+           (match-string-no-properties 0)))
+         matches)))
+    matches))
+
+;; #ffffff
+;; #eeeeee
+;; #aaaaaa
+
 
 ;;;###autoload (autoload 'counsel-hex-colors "~/.config/doom/autoload/ivy" nil t)
 (defun counsel-hex-colors ()
@@ -33,7 +34,7 @@
   (interactive)
   (let* ((colors (counsel--hex-colors-candidates))
          (blank (make-string 10 ?\s))
-         (fmt (format "%%-%ds %%s %%s"
+         (fmt (format "%%-%ds: %%s %%s"
                       (apply #'max 0 (mapcar #'string-width colors))))
          (ivy-format-function
           (counsel-colors--formatter
@@ -46,5 +47,5 @@
      "Jump to color: " colors
      :require-match t
      :history 'counsel-hex-colors-history
-     :sort t
+     :sort t 
      :action #'counsel--hex-colors-action)))
